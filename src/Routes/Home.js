@@ -47,10 +47,10 @@ function Home() {
   return (
     <div className="App">
       <div className="headerContainer">
-        <h1>Welcome to the CryptoChecker</h1>
+        <h1>CryptoChecker App</h1>
         <div className="buttonContainer">
           <input
-            placeholder="Search for a Coin"
+            placeholder="Search Crypto Coin"
             type="text"
             onChange={handleSearch}
           />
@@ -58,7 +58,7 @@ function Home() {
         </div>
       </div>
       <div className="coinContainer">
-        {isLoading && <h1 className="loadingMssg">Data Loading...</h1>}
+        {isLoading && <h1 className="loadingMssg">Loading...</h1>}
         {filterCoins.map((coins) => {
           return (
             <Coin

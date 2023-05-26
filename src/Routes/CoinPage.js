@@ -71,7 +71,7 @@ function CoinPage() {
             </div>
           </div>
           <Link to="/">
-            <div className="coinPage-RouteButton">Go back</div>
+            <div className="coinPage-RouteButton">Return</div>
           </Link>
 
           {/* coinName={coins.name}
