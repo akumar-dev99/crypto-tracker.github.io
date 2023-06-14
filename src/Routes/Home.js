@@ -1,36 +1,36 @@
-import "../App.css";
-import Axios from "axios";
-import { useState, useEffect } from "react";
-import Coin from "../Components/Coin";
-import Refresh from "../Images/refresh.png";
+import '../App.css'
+import Axios from 'axios'
+import { useState, useEffect } from 'react'
+import Coin from '../Components/Coin'
+import Refresh from '../Images/refresh.png'
 
-function Home() {
-  const [coins, setCoins] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+function Home () {
+  const [coins, setCoins] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    refreshPage();
-  }, []);
+    refreshPage()
+  }, [])
 
-  const filterCoins = coins.filter((coin) =>
+  const filterCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const handleSearch = e => {
+    setSearchTerm(e.target.value)
+  }
 
   const refreshPage = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     Axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-    ).then((response) => {
-      console.log(response.data);
-      setIsLoading(false);
-      setCoins(response.data);
-    });
-  };
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+    ).then(response => {
+      console.log(response.data)
+      setIsLoading(false)
+      setCoins(response.data)
+    })
+  }
 
   // const getCoins = () => {
   //   Axios.get(
@@ -45,21 +45,21 @@ function Home() {
 
   // history.push("/coin/${id}")
   return (
-    <div className="App">
-      <div className="headerContainer">
+    <div className='App'>
+      <div className='headerContainer'>
         <h1>CryptoChecker App</h1>
-        <div className="buttonContainer">
+        <div className='buttonContainer'>
           <input
-            placeholder="Search Crypto Coin"
-            type="text"
+            placeholder='Search Crypto Coin'
+            type='text'
             onChange={handleSearch}
           />
           <img onClick={refreshPage} src={Refresh}></img>
         </div>
       </div>
-      <div className="coinContainer">
-        {isLoading && <h1 className="loadingMssg">Loading...</h1>}
-        {filterCoins.map((coins) => {
+      <div className='coinContainer'>
+        {isLoading && <h1 className='loadingMssg'>Loading...</h1>}
+        {filterCoins.map(coins => {
           return (
             <Coin
               id={coins.id}
@@ -70,11 +70,11 @@ function Home() {
               marketCap={coins.market_cap}
               priceChange={coins.price_change_percentage_24h}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
