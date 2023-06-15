@@ -1,6 +1,6 @@
 {
   "name": "crypto-app",
-  "homepage": "http://localhost:3000",
+  "homepage": "crypto-tracker.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
